@@ -1,0 +1,5 @@
+﻿[2025-10-25T18:29:59.515Z] START http://localhost:5050/ | FilesRoot=C:\Users\cirko\Desktop\Sistemsko\ZipServer\bin\Debug\net9.0\data
+[2025-10-25T18:30:21.170Z] REQ [::1]:65520 /test1.txt&test2.txt -> 200 | CACHE_MISS ZIP[2 files, 10 bytes src] -> 304 bytes
+[2025-10-25T18:30:21.178Z] REQ_DONE [::1]:65520 /test1.txt&test2.txt in 176.8 ms
+[2025-10-25T18:30:31.286Z] REQ [::1]:65520 /test1.txt -> 200 | CACHE_MISS ZIP[1 files, 5 bytes src] -> 163 bytes
+[2025-10-25T18:30:31.286Z] REQ_DONE [::1]:65520 /test1.txt in 1.1 ms

@@ -1,0 +1,4 @@
+﻿2025-10-25T18:28:49.4331975Z [INFO] Listening on http://localhost:5051/
+2025-10-25T18:35:26.7956735Z [INFO] Listening on http://localhost:5051/
+2025-10-25T18:35:30.5985309Z [INFO] [::1]:55642 GET /analyze?topic=react -> 200 topics=1 elapsed=1008ms
+2025-10-25T18:35:30.7026964Z [WARN] [::1]:55642 GET /favicon.ico -> 404

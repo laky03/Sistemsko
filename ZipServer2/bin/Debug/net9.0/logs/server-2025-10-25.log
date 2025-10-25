@@ -1,0 +1,12 @@
+﻿2025-10-25T18:31:00.3532985Z START http://localhost:5050/ root=C:\Users\cirko\Desktop\Sistemsko\ZipServer2\bin\Debug\net9.0\files
+2025-10-25T18:31:13.4493828Z REQ [::1]:60380 -> [test1.txt]
+2025-10-25T18:31:13.6143380Z MISS->CACHED [test1.txt] 123B
+2025-10-25T18:31:42.4115078Z REQ [::1]:54664 -> [test1.txt&test2.txt]
+2025-10-25T18:31:42.4144393Z MISS->CACHED [test1.txt&test2.txt] 224B
+2025-10-25T18:31:52.1972242Z REQ [::1]:54664 -> [test2.txt]
+2025-10-25T18:31:52.1991882Z MISS->CACHED [test2.txt] 123B
+2025-10-25T18:33:26.6202495Z START http://localhost:5050/ root=C:\Users\cirko\Desktop\Sistemsko\ZipServer2\bin\Debug\net9.0\files
+2025-10-25T18:33:38.9612098Z REQ [::1]:55579 -> [favicon.ico]
+2025-10-25T18:33:38.9623481Z MISS-NONE [favicon.ico]
+2025-10-25T18:34:05.7106348Z REQ [::1]:55579 -> [test1.txt]
+2025-10-25T18:34:05.7495687Z MISS->CACHED [test1.txt] 123B

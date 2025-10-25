@@ -1,0 +1,17 @@
+﻿2025-10-22T13:27:23.6256553Z START http://localhost:5050/ root=C:\Users\cirko\ZipServer2\bin\Debug\net9.0\files
+2025-10-22T13:27:38.1865203Z REQ [::1]:64760 -> [test1.txt&test2.txt]
+2025-10-22T13:27:38.1945154Z MISS-NONE [test1.txt&test2.txt]
+2025-10-22T13:27:38.2448680Z REQ [::1]:64760 -> [favicon.ico]
+2025-10-22T13:27:38.2457159Z MISS-NONE [favicon.ico]
+2025-10-22T13:28:53.1056110Z START http://localhost:5050/ root=C:\Users\cirko\ZipServer2\bin\Debug\net9.0\files
+2025-10-22T13:29:05.4056487Z REQ [::1]:64765 -> [test1.txt&test2.txt]
+2025-10-22T13:29:05.6016678Z MISS->CACHED [test1.txt&test2.txt] 210B
+2025-10-22T13:30:21.6717083Z START http://localhost:5050/ root=C:\Users\cirko\ZipServer2\bin\Debug\net9.0\files
+2025-10-22T13:30:29.5127772Z REQ [::1]:64772 -> [test1.txt]
+2025-10-22T13:30:29.5671947Z MISS->CACHED [test1.txt] 123B
+2025-10-22T13:30:39.9413058Z START http://localhost:5050/ root=C:\Users\cirko\ZipServer2\bin\Debug\net9.0\files
+2025-10-22T13:30:47.7116411Z REQ [::1]:64775 -> [test2.txt]
+2025-10-22T13:30:47.7656501Z MISS->CACHED [test2.txt] 123B
+2025-10-22T13:30:59.0750793Z REQ [::1]:64775 -> [test1.txt&test2.txt]
+2025-10-22T13:30:59.0770203Z MISS->CACHED [test1.txt&test2.txt] 224B
+2025-10-22T13:31:10.8538777Z PURGE-ALL 2

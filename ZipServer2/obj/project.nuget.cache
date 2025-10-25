@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "xw97Kw2Y58I=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\cirko\\ZipServer2\\ZipServer2.csproj",
+  "expectedPackageFiles": [
+    "C:\\NuGet\\packages\\sharpziplib\\1.4.2\\sharpziplib.1.4.2.nupkg.sha512"
+  ],
+  "logs": []
+}

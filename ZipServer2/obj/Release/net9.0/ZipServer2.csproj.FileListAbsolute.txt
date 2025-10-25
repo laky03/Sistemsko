@@ -1,0 +1,17 @@
+C:\Users\cirko\ZipServer2\bin\Release\net9.0\ZipServer2.exe
+C:\Users\cirko\ZipServer2\bin\Release\net9.0\ZipServer2.deps.json
+C:\Users\cirko\ZipServer2\bin\Release\net9.0\ZipServer2.runtimeconfig.json
+C:\Users\cirko\ZipServer2\bin\Release\net9.0\ZipServer2.dll
+C:\Users\cirko\ZipServer2\bin\Release\net9.0\ZipServer2.pdb
+C:\Users\cirko\ZipServer2\bin\Release\net9.0\ICSharpCode.SharpZipLib.dll
+C:\Users\cirko\ZipServer2\obj\Release\net9.0\ZipServer2.csproj.AssemblyReference.cache
+C:\Users\cirko\ZipServer2\obj\Release\net9.0\ZipServer2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\cirko\ZipServer2\obj\Release\net9.0\ZipServer2.AssemblyInfoInputs.cache
+C:\Users\cirko\ZipServer2\obj\Release\net9.0\ZipServer2.AssemblyInfo.cs
+C:\Users\cirko\ZipServer2\obj\Release\net9.0\ZipServer2.csproj.CoreCompileInputs.cache
+C:\Users\cirko\ZipServer2\obj\Release\net9.0\ZipServer2.csproj.Up2Date
+C:\Users\cirko\ZipServer2\obj\Release\net9.0\ZipServer2.dll
+C:\Users\cirko\ZipServer2\obj\Release\net9.0\refint\ZipServer2.dll
+C:\Users\cirko\ZipServer2\obj\Release\net9.0\ZipServer2.pdb
+C:\Users\cirko\ZipServer2\obj\Release\net9.0\ZipServer2.genruntimeconfig.cache
+C:\Users\cirko\ZipServer2\obj\Release\net9.0\ref\ZipServer2.dll

@@ -1,0 +1,14 @@
+﻿[2025-10-22T12:57:25.571Z] START http://localhost:5050/ | FilesRoot=C:\Users\cirko\ZipServer\bin\Debug\net9.0\data
+[2025-10-22T12:57:37.224Z] REQ [::1]:55132 /test1.txt&test2.txt -> 404 | NO_EXISTING_FILES
+[2025-10-22T12:57:37.235Z] REQ_DONE [::1]:55132 /test1.txt&test2.txt in 8.6 ms
+[2025-10-22T12:58:08.977Z] REQ [::1]:55132 /test1.txt&test2.txt -> 404 | NO_EXISTING_FILES
+[2025-10-22T12:58:08.978Z] REQ_DONE [::1]:55132 /test1.txt&test2.txt in 0.4 ms
+[2025-10-22T12:58:16.227Z] START http://localhost:5050/ | FilesRoot=C:\Users\cirko\ZipServer\bin\Debug\net9.0\data
+[2025-10-22T12:58:31.994Z] REQ [::1]:55134 /test1.txt&test2.txt -> 404 | NO_EXISTING_FILES
+[2025-10-22T12:58:32.004Z] REQ_DONE [::1]:55134 /test1.txt&test2.txt in 7.4 ms
+[2025-10-22T12:58:44.055Z] START http://localhost:5050/ | FilesRoot=C:\Users\cirko\ZipServer\bin\Debug\net9.0\data
+[2025-10-22T12:58:59.416Z] REQ [::1]:55157 /test1.txt&test2.txt -> 404 | NO_EXISTING_FILES
+[2025-10-22T12:58:59.425Z] REQ_DONE [::1]:55157 /test1.txt&test2.txt in 7.4 ms
+[2025-10-22T13:00:45.519Z] START http://localhost:5050/ | FilesRoot=C:\Users\cirko\ZipServer\bin\Debug\net9.0\data
+[2025-10-22T13:00:57.034Z] REQ [::1]:55223 /test1.txt&test2.txt -> 200 | CACHE_MISS ZIP[2 files, 10 bytes src] -> 304 bytes
+[2025-10-22T13:00:57.044Z] REQ_DONE [::1]:55223 /test1.txt&test2.txt in 168.3 ms
