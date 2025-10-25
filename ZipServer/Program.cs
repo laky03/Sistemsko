@@ -1,8 +1,3 @@
-﻿// Program.cs
-// .NET Console app — sinhrono, bez async/Task
-// System.Threading: ThreadPool, lock/Monitor, ReaderWriterLockSlim
-// Keš odgovora u memoriji; ZIP samo sa postojećim fajlovima; bez HTML-a ka browseru
-
 using System;
 using System.Collections.Generic;
 using System.IO;
