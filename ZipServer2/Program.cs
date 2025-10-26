@@ -1,6 +1,6 @@
-﻿using System.Net;
+using System;
+using System.Net;
 using System.Text;
-using System.Web;
 using System.Linq;
 using System.Collections.Concurrent;
 using System.Security.Cryptography;
@@ -15,7 +15,8 @@ internal static class Program
     private static readonly string FilesRoot =
         Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "files"));
 
-    private static readonly ConcurrentDictionary<string, CacheEntry> Cache = new(StringComparer.OrdinalIgnoreCase);
+    private static readonly ConcurrentDictionary<string, CacheEntry> Cache =
+        new(StringComparer.OrdinalIgnoreCase);
 
     private static readonly int Cpu = Math.Max(1, Environment.ProcessorCount);
     private static readonly SemaphoreSlim ZipGate = new(initialCount: Cpu, maxCount: Cpu);
@@ -26,30 +27,61 @@ internal static class Program
 
     private sealed record CacheEntry(byte[] Bytes, string ContentType, DateTimeOffset CreatedUtc, string ETag);
 
+    private static readonly CancellationTokenSource Cts = new();
+
     private static async Task Main()
     {
+        Console.CancelKeyPress += (_, e) =>
+        {
+            e.Cancel = true;
+            Cts.Cancel();
+        };
+
         Directory.CreateDirectory(LogDir);
         Directory.CreateDirectory(FilesRoot);
 
         using var listener = new HttpListener();
         listener.Prefixes.Add(Prefix);
-        listener.Start();
+
+        try
+        {
+            listener.Start();
+        }
+        catch (HttpListenerException ex)
+        {
+            Log($"FATAL cannot start listener: {ex}");
+            return;
+        }
+
         Log($"START {Prefix} root={FilesRoot}");
 
-        _ = Task.Run(async () =>
+        var acceptPump = Task.Run(async () =>
         {
-            while (listener.IsListening)
+            while (listener.IsListening && !Cts.IsCancellationRequested)
             {
                 HttpListenerContext ctx;
-                try { ctx = await listener.GetContextAsync().ConfigureAwait(false); }
+                try
+                {
+                    ctx = await listener.GetContextAsync().ConfigureAwait(false);
+                }
                 catch (HttpListenerException) { break; }
                 catch (ObjectDisposedException) { break; }
+                catch
+                {
+                    if (!listener.IsListening) break;
+                    continue;
+                }
 
-                _ = Task.Run(() => Handle(ctx));
+                _ = Task.Run(() => Handle(ctx), Cts.Token);
             }
-        });
+        }, Cts.Token);
 
-        await Task.Delay(Timeout.InfiniteTimeSpan);
+        await Task.Run(() => Cts.Token.WaitHandle.WaitOne(), Cts.Token).ConfigureAwait(false);
+
+        try { listener.Stop(); } catch { }
+        Log("STOP");
+
+        try { await acceptPump.ConfigureAwait(false); } catch { }
     }
 
     private static async Task Handle(HttpListenerContext ctx)
@@ -70,7 +102,7 @@ internal static class Program
         }
 
         var files = selector.Split('&', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
-                            .Select(HttpUtility.UrlDecode)
+                            .Select(WebUtility.UrlDecode)
                             .Where(s => !string.IsNullOrWhiteSpace(s))
                             .Select(NormalizeSafeRelativePath)
                             .Where(s => s is not null)
@@ -161,7 +193,7 @@ internal static class Program
 
         var rest = string.Join('/', parts.Skip(1));
         var keys = rest.Split('&', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
-                       .Select(HttpUtility.UrlDecode)
+                       .Select(WebUtility.UrlDecode)
                        .Where(s => !string.IsNullOrWhiteSpace(s))
                        .Select(NormalizeSafeRelativePath)
                        .Where(s => s is not null)
@@ -239,8 +271,8 @@ internal static class Program
         using var ms = new MemoryStream();
         using (var zip = new ZipOutputStream(ms))
         {
-            zip.IsStreamOwner = false; 
-            zip.SetLevel(6);         
+            zip.IsStreamOwner = false;
+            zip.SetLevel(6);
 
             foreach (var (rel, full) in files)
             {
@@ -253,7 +285,7 @@ internal static class Program
                 zip.PutNextEntry(entry);
 
                 using var fs = new FileStream(full, FileMode.Open, FileAccess.Read, FileShare.Read);
-                fs.CopyTo(zip); 
+                fs.CopyTo(zip);
                 zip.CloseEntry();
             }
             zip.Finish();
